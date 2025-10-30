@@ -47,7 +47,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-around",
     alignItems: "center",
-    backgroundColor: "#f2f3f5", // light gray like Facebook
+    backgroundColor: "#f2f3f5", 
     paddingVertical: 8,
     borderTopWidth: 0.5,
     borderColor: "#ddd",
@@ -65,7 +65,7 @@ const styles = StyleSheet.create({
     marginTop: 2,
   },
   active: {
-    color: "#1877F2", // Facebook blue for active page
+    color: "#1877F2", 
     fontWeight: "600",
   },
   badgeWrap: {
@@ -75,7 +75,7 @@ const styles = StyleSheet.create({
     position: "absolute",
     top: -5,
     right: -10,
-    backgroundColor: "#E41E3F", // red notification badge
+    backgroundColor: "#E41E3F", 
     width: 16,
     height: 16,
     borderRadius: 8,

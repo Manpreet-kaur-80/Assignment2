@@ -9,7 +9,7 @@ export default function Menu() {
       <Header />
 
      <ScrollView contentContainerStyle={{ paddingBottom: 20 }}>
-        {/* Top section with name */}
+        {/* Top section with name of page*/}
         <View style={styles.topRow}>
           <Text style={styles.title}>Menu</Text>
           <View style={styles.icons}>
@@ -21,7 +21,7 @@ export default function Menu() {
         {/* Profile box */}
         <View style={styles.profileBox}>
   <Image
-    source={{ uri: "https://randomuser.me/api/portraits/women/44.jpg" }} // your profile picture
+    source={{ uri: "https://randomuser.me/api/portraits/women/44.jpg" }} 
     style={styles.avatar}
   />
   <Text style={styles.name}>Mann Kaur</Text>
@@ -132,6 +132,7 @@ export default function Menu() {
     </View>
   );
 }
+{/* styling for page */}
 
 const styles = StyleSheet.create({
   screen: { flex: 1, backgroundColor: "#f2f3f5" },
