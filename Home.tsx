@@ -1,182 +1,153 @@
-import React from "react";
-import {
-  View,
-  Text,
-  Image,
-  TextInput,
-  ScrollView,
-  TouchableOpacity,
-  StyleSheet,
-} from "react-native";
-import { Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
+mport { View, Text, StyleSheet, ScrollView, Image } from "react-native";
+import Header from "../components/Header";
+import BottomBar from "../components/BottomBar";
 
-export default function FacebookHome() {
+export default function Home() {
+  const stories = [
+    {
+      name: "Create story",
+      img: "https://i.pinimg.com/originals/a0/60/be/a060be70906ff02fea00add1144e4ad7.jpg",
+    },
+    {
+      name: "Kulveer",
+      img: "https://meninspire.com/wp-content/uploads/2025/01/Receding-hairline-haircut3-962x1024.webp",
+    },
+    {
+      name: "Karmjeet",
+      img: "https://tse4.mm.bing.net/th/id/OIP.RQu91azrCn5WCE_Jpz_t3QHaLF?pid=ImgDet&w=185&h=277&c=7&dpr=1.3&o=7&rm=3",
+    },
+    {
+      name: "Jaidev",
+      img: "https://tse4.mm.bing.net/th/id/OIP.RQu91azrCn5WCE_Jpz_t3QHaLF?pid=ImgDet&w=185&h=277&c=7&dpr=1.3&o=7&rm=3",
+    },
+    {
+      name: "Rana",
+      img: "https://tse2.mm.bing.net/th/id/OIP.i-NK30bwnCkDaKAXRo2-sgHaHd?pid=ImgDet&w=185&h=186&c=7&dpr=1.3&o=7&rm=3",
+    },
+  ];
+
   return (
-    <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
-      {/* Header */}
-      <View style={styles.header}>
-        <Text style={styles.logo}>facebook</Text>
-        <View style={styles.headerIcons}>
-          <Ionicons name="add-circle-outline" size={24} color="black" style={styles.icon} />
-          <Ionicons name="search-outline" size={24} color="black" style={styles.icon} />
-          <Ionicons name="chatbubble-ellipses-outline" size={24} color="black" />
-        </View>
-      </View>
-
-      {/* What's on your mind */}
-      <View style={styles.statusInput}>
-        <Image
-          source={{ uri: "https://www.w3schools.com/howto/img_avatar.png" }}
-          style={styles.avatar}
-        />
-        <TextInput
-          placeholder="What's on your mind?"
-          placeholderTextColor="#777"
-          style={styles.input}
-        />
-        <Ionicons name="images-outline" size={22} color="#1877f2" />
-      </View>
-
-      {/* Stories */}
-      <ScrollView
-        horizontal
-        showsHorizontalScrollIndicator={false}
-        style={styles.stories}
-      >
-        <View style={styles.storyCard}>
-          <View style={styles.storyPlaceholder}>
-            <Ionicons name="add" size={28} color="#1877f2" />
+    <View style={styles.screen}>
+      <Header />
+      <ScrollView contentContainerStyle={{ paddingBottom: 20 }}>
+        <View style={styles.rowTop}>
+          <Text style={styles.bigLogo}>facebook</Text>
+          <View style={styles.actionsRow}>
+            <Text style={styles.action}>＋</Text>
+            <Text style={styles.action}>🔎</Text>
+            <Text style={styles.action}>💬</Text>
           </View>
-          <Text style={styles.storyText}>Create story</Text>
         </View>
 
-        {["Kulveer Dhillon", "Karmjeet Dhillon", "Jaideep Singh"].map(
-          (name, i) => (
+        <View style={styles.whatsBox}>
+          <View style={styles.avatar} />
+          <Text style={styles.whatsText}>What's on your mind?</Text>
+          <Text style={styles.photoBtn}>🖼</Text>
+        </View>
+
+        <ScrollView
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          contentContainerStyle={{ paddingHorizontal: 12 }}
+          style={{ marginTop: 8 }}
+        >
+          {stories.map((s, i) => (
             <View key={i} style={styles.storyCard}>
-              <Image
-                source={{ uri: https://picsum.photos/200/300?random=${i} }}
-                style={styles.storyImage}
-              />
-              <Text style={styles.storyText}>{name}</Text>
+              <Image source={{ uri: s.img }} style={styles.storyPic} />
+              <Text style={styles.storyName} numberOfLines={1}>
+                {s.name}
+              </Text>
             </View>
-          )
-        )}
-      </ScrollView>
+          ))}
+        </ScrollView>
 
-      {/* Post */}
-      <View style={styles.postCard}>
-        <View style={styles.postHeader}>
-          <Image
-            source={{ uri: "https://www.w3schools.com/howto/img_avatar2.png" }}
-            style={styles.avatarSmall}
-          />
-          <View style={{ flex: 1 }}>
-            <Text style={styles.postGroup}>
-              Calgary Buy, Sell & Trade Health & Beauty
-            </Text>
-            <Text style={styles.postAuthor}>Zoey Mcgillis · 19h</Text>
+        <View style={styles.post}>
+          <View style={styles.postHeader}>
+            <View style={styles.postThumb} />
+            <View>
+              <Text style={styles.postTitle}>
+                Calgary Buy, Sell & Trade Health & Beauty
+              </Text>
+              <Text style={styles.postMeta}>Zoey Mcgillis · 19h · 🌐</Text>
+            </View>
           </View>
-          <Ionicons name="ellipsis-horizontal" size={20} color="#444" />
+          <Text style={styles.postBody}>
+            Still in great condition, no cracks, just don’t have the room — pick
+            up only
+          </Text>
+          <Image
+            style={styles.postImage}
+            source={{
+              uri: "https://cdn.pixabay.com/photo/2023/09/19/09/09/sofa-8262137_640.jpg",
+            }}
+          />
+          <Text style={styles.priceLine}>CA$10 · CALGARY, AB</Text>
+          <Text style={styles.boldLine}>Plastic white organiser drawer</Text>
+          <View style={styles.postActions}>
+            <Text>👍 Like</Text>
+            <Text>💬 Comment</Text>
+            <Text>↗ Share</Text>
+          </View>
         </View>
-
-        <Text style={styles.postText}>
-          Still in great condition, no cracks, just don’t have the room. Pick up only.
-        </Text>
-
-        <Text style={styles.postPrice}>CA$10 · CALGARY, AB</Text>
-        <Text style={styles.postTitle}>Plastic white organiser drawer</Text>
-
-        <View style={styles.postActions}>
-          <TouchableOpacity style={styles.actionButton}>
-            <Ionicons name="thumbs-up-outline" size={20} color="#444" />
-            <Text style={styles.actionText}> Like</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.actionButton}>
-            <Ionicons name="chatbubble-outline" size={20} color="#444" />
-            <Text style={styles.actionText}> Comment</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.actionButton}>
-            <Ionicons name="share-outline" size={20} color="#444" />
-            <Text style={styles.actionText}> Share</Text>
-          </TouchableOpacity>
-        </View>
-      </View>
-    </ScrollView>
+      </ScrollView>
+      <BottomBar />
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: "#fff", paddingTop: 40 },
-
-  header: {
+  screen: { flex: 1, backgroundColor: "#fff" },
+  rowTop: {
+    paddingHorizontal: 16,
+    paddingTop: 10,
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    paddingHorizontal: 15,
   },
-  logo: { fontSize: 28, color: "#1877f2", fontWeight: "700" },
-  headerIcons: { flexDirection: "row" },
-  icon: { marginHorizontal: 8 },
-
-  statusInput: {
+  bigLogo: { fontSize: 24, color: "#1877F2", fontWeight: "bold" },
+  actionsRow: { flexDirection: "row", gap: 14 },
+  action: { fontSize: 20 },
+  whatsBox: {
+    marginTop: 12,
+    paddingHorizontal: 16,
     flexDirection: "row",
     alignItems: "center",
-    padding: 10,
-    backgroundColor: "#fff",
-    borderBottomWidth: 1,
-    borderBottomColor: "#eee",
+    gap: 10,
   },
-  avatar: { width: 40, height: 40, borderRadius: 20 },
-  input: {
-    marginLeft: 10,
-    flex: 1,
-    borderWidth: 1,
-    borderColor: "#ddd",
-    borderRadius: 20,
-    paddingHorizontal: 15,
-    paddingVertical: 5,
-  },
-
-  stories: { paddingVertical: 10, paddingLeft: 10, backgroundColor: "#fff" },
-  storyCard: { alignItems: "center", marginRight: 12 },
-  storyPlaceholder: {
-    width: 60,
-    height: 60,
-    borderRadius: 10,
-    backgroundColor: "#ddd",
-    justifyContent: "center",
+  avatar: { width: 38, height: 38, borderRadius: 19, backgroundColor: "#f3f5f7" },
+  whatsText: { flex: 1, color: "#777" },
+  photoBtn: { fontSize: 18 },
+  storyCard: {
+    width: 90,
+    marginRight: 10,
     alignItems: "center",
   },
-  storyImage: { width: 60, height: 60, borderRadius: 10 },
-  storyText: { fontSize: 12, marginTop: 5 },
-
-  postCard: {
-    backgroundColor: "#fff",
-    marginTop: 10,
-    padding: 12,
-    borderTopWidth: 1,
-    borderTopColor: "#eee",
+  storyPic: {
+    width: 90,
+    height: 150,
+    borderRadius: 12,
+    backgroundColor: "#f3f5f7",
   },
+  storyName: { marginTop: 6, fontSize: 12 },
+  post: { backgroundColor: "#fff", marginTop: 14, paddingBottom: 10 },
   postHeader: {
     flexDirection: "row",
+    gap: 10,
+    padding: 12,
     alignItems: "center",
-    marginBottom: 8,
   },
-  avatarSmall: { width: 40, height: 40, borderRadius: 20, marginRight: 10 },
-  postGroup: { fontWeight: "bold", fontSize: 14 },
-  postAuthor: { color: "#777", fontSize: 12 },
-  postText: { marginVertical: 8, fontSize: 14 },
-  postPrice: { color: "#555", fontWeight: "bold", marginBottom: 3 },
-  postTitle: { fontSize: 15, marginBottom: 5 },
-
+  postThumb: { width: 40, height: 40, borderRadius: 20, backgroundColor: "#f3f5f7" },
+  postTitle: { fontWeight: "600", maxWidth: 260 },
+  postMeta: { color: "#777", fontSize: 12 },
+  postBody: { paddingHorizontal: 12, paddingBottom: 8 },
+  postImage: { width: "100%", height: 260 },
+  priceLine: { paddingHorizontal: 12, color: "#777", marginTop: 8 },
+  boldLine: { paddingHorizontal: 12, fontWeight: "600", marginBottom: 6 },
   postActions: {
     flexDirection: "row",
     justifyContent: "space-around",
-    borderTopWidth: 1,
-    borderTopColor: "#ddd",
-    marginTop: 10,
-    paddingTop: 5,
-  },
-  actionButton: { flexDirection: "row", alignItems: "center" },
-  actionText: { color: "#444", fontSize: 13 },
+    paddingVertical: 10,
+    borderTopWidth: 0.5,
+    borderColor: "#e3e3e3",
+  },
 });
