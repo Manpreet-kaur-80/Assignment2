@@ -1,12 +1,34 @@
-import { View, Text, StyleSheet, ScrollView, Image } from "react-native";
+mport { View, Text, StyleSheet, ScrollView, Image } from "react-native";
 import Header from "../components/Header";
 import BottomBar from "../components/BottomBar";
 
 export default function Home() {
+  const stories = [
+    {
+      name: "Create story",
+      img: "https://i.pinimg.com/originals/a0/60/be/a060be70906ff02fea00add1144e4ad7.jpg",
+    },
+    {
+      name: "Kulveer",
+      img: "https://meninspire.com/wp-content/uploads/2025/01/Receding-hairline-haircut3-962x1024.webp",
+    },
+    {
+      name: "Karmjeet",
+      img: "https://tse4.mm.bing.net/th/id/OIP.RQu91azrCn5WCE_Jpz_t3QHaLF?pid=ImgDet&w=185&h=277&c=7&dpr=1.3&o=7&rm=3",
+    },
+    {
+      name: "Jaidev",
+      img: "https://tse4.mm.bing.net/th/id/OIP.RQu91azrCn5WCE_Jpz_t3QHaLF?pid=ImgDet&w=185&h=277&c=7&dpr=1.3&o=7&rm=3",
+    },
+    {
+      name: "Rana",
+      img: "https://tse2.mm.bing.net/th/id/OIP.i-NK30bwnCkDaKAXRo2-sgHaHd?pid=ImgDet&w=185&h=186&c=7&dpr=1.3&o=7&rm=3",
+    },
+  ];
+
   return (
     <View style={styles.screen}>
       <Header />
-
       <ScrollView contentContainerStyle={{ paddingBottom: 20 }}>
         <View style={styles.rowTop}>
           <Text style={styles.bigLogo}>facebook</Text>
@@ -20,29 +42,25 @@ export default function Home() {
         <View style={styles.whatsBox}>
           <View style={styles.avatar} />
           <Text style={styles.whatsText}>What's on your mind?</Text>
-          <Text style={styles.photoBtn}>🖼️</Text>
+          <Text style={styles.photoBtn}>🖼</Text>
         </View>
 
-        {/* Stories strip */}
         <ScrollView
           horizontal
           showsHorizontalScrollIndicator={false}
           contentContainerStyle={{ paddingHorizontal: 12 }}
           style={{ marginTop: 8 }}
         >
-          {["Create story", "Kulveer", "Karmjeet", "Jaidev", "Rana"].map(
-            (n, i) => (
-              <View key={i} style={styles.storyCard}>
-                <View style={styles.storyPic} />
-                <Text style={styles.storyName} numberOfLines={1}>
-                  {n}
-                </Text>
-              </View>
-            )
-          )}
+          {stories.map((s, i) => (
+            <View key={i} style={styles.storyCard}>
+              <Image source={{ uri: s.img }} style={styles.storyPic} />
+              <Text style={styles.storyName} numberOfLines={1}>
+                {s.name}
+              </Text>
+            </View>
+          ))}
         </ScrollView>
 
-        {/*  */}
         <View style={styles.post}>
           <View style={styles.postHeader}>
             <View style={styles.postThumb} />
@@ -54,13 +72,13 @@ export default function Home() {
             </View>
           </View>
           <Text style={styles.postBody}>
-            Still in great condition , no cracks , just don’t have the room —
-            pick up only
+            Still in great condition, no cracks, just don’t have the room — pick
+            up only
           </Text>
           <Image
             style={styles.postImage}
             source={{
-              uri: "https://images.unsplash.com/photo-1503023345310-bd7c1de61c7d",
+              uri: "https://cdn.pixabay.com/photo/2023/09/19/09/09/sofa-8262137_640.jpg",
             }}
           />
           <Text style={styles.priceLine}>CA$10 · CALGARY, AB</Text>
@@ -68,18 +86,14 @@ export default function Home() {
           <View style={styles.postActions}>
             <Text>👍 Like</Text>
             <Text>💬 Comment</Text>
-            <Text>↗️ Share</Text>
+            <Text>↗ Share</Text>
           </View>
         </View>
       </ScrollView>
-
       <BottomBar />
     </View>
   );
 }
-
-const CARD_BG = "#fff";
-const LIGHT = "#f3f5f7";
 
 const styles = StyleSheet.create({
   screen: { flex: 1, backgroundColor: "#fff" },
@@ -100,7 +114,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     gap: 10,
   },
-  avatar: { width: 38, height: 38, borderRadius: 19, backgroundColor: LIGHT },
+  avatar: { width: 38, height: 38, borderRadius: 19, backgroundColor: "#f3f5f7" },
   whatsText: { flex: 1, color: "#777" },
   photoBtn: { fontSize: 18 },
   storyCard: {
@@ -112,12 +126,17 @@ const styles = StyleSheet.create({
     width: 90,
     height: 150,
     borderRadius: 12,
-    backgroundColor: LIGHT,
+    backgroundColor: "#f3f5f7",
   },
   storyName: { marginTop: 6, fontSize: 12 },
-  post: { backgroundColor: CARD_BG, marginTop: 14, paddingBottom: 10 },
-  postHeader: { flexDirection: "row", gap: 10, padding: 12, alignItems: "center" },
-  postThumb: { width: 40, height: 40, borderRadius: 20, backgroundColor: LIGHT },
+  post: { backgroundColor: "#fff", marginTop: 14, paddingBottom: 10 },
+  postHeader: {
+    flexDirection: "row",
+    gap: 10,
+    padding: 12,
+    alignItems: "center",
+  },
+  postThumb: { width: 40, height: 40, borderRadius: 20, backgroundColor: "#f3f5f7" },
   postTitle: { fontWeight: "600", maxWidth: 260 },
   postMeta: { color: "#777", fontSize: 12 },
   postBody: { paddingHorizontal: 12, paddingBottom: 8 },
@@ -130,8 +149,5 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     borderTopWidth: 0.5,
     borderColor: "#e3e3e3",
-  },
-})
-
-
-
+  },
+});
