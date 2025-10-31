@@ -42,7 +42,7 @@ export default function Home() {
           )}
         </ScrollView>
 
-        {/* One sample post like your snapshot */}
+        {/*  */}
         <View style={styles.post}>
           <View style={styles.postHeader}>
             <View style={styles.postThumb} />
